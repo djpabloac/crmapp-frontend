@@ -1,7 +1,9 @@
 import Head from 'next/head'
 import Layout from '../components/Layout'
+import { usePermisson } from '../components/Global';
 
 export default function Home() {
+
   return (
     <div>
       <Layout>

@@ -29,6 +29,11 @@ const client = new ApolloClient({
                         merge(existing, incoming) {
                             return incoming;
                         }
+                    },
+                    obtenerProductos: {
+                        merge(existing, incoming) {
+                            return incoming;
+                        }
                     }
                 }
             }

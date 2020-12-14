@@ -1,36 +1,13 @@
 import React, { useState } from 'react';
+import { ACTUALIZAR_CLIENTE, OBTENER_CLIENTE } from './type';
 import Layout from '../../components/Layout';
 import { useRouter } from 'next/router';
-import { useMutation, useQuery, gql } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import Swal from 'sweetalert2';
 
-const ACTUALIZAR_CLIENTE = gql`
-    mutation actualizarCliente($id: ID!, $input: ClienteInput) {
-        actualizarCliente(id: $id, input: $input) {
-            id
-            nombre
-            apellido
-            empresa
-            email
-        }
-    }
-`;
-
-const OBTENER_CLIENTE = gql`
-    query obtenerCliente($id: ID!) {
-        obtenerCliente(id: $id) {
-            id
-            nombre
-            apellido
-            empresa
-            email
-        }
-    }
-`;
-
-export default function EditarCliente() {
+export default function Edit() {
 
     const router = useRouter();
     const { query: { id } } = router;
@@ -101,7 +78,6 @@ export default function EditarCliente() {
 
     return (
         <Layout>
-            <h1 className="text-2xl text-gray-800 font-light">Editar Cliente</h1>
             {mensaje && mostrarMensaje()}
             <div className="flex justify-center mt-5">
                 <div className="w-full max-w-sm">
@@ -226,7 +202,7 @@ export default function EditarCliente() {
                                     ) : null}
 
                                     <input
-                                        className="bg-gray-800 w-full mt-5 p-2 text-white uppercase hover:bg-gray-900"
+                                        className="btn-confirm"
                                         type="submit"
                                         value="Editar Cliente"
                                     />

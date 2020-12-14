@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import Layout from '../components/Layout';
 import { FormikConsumer, useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useMutation, gql } from '@apollo/client';
@@ -14,7 +13,7 @@ const AUTENTICAR_USUARIO = gql`
 `;
 
 export default function Login() {
-    
+
     //Mutation para crear token
     const [autenticarUsuario] = useMutation(AUTENTICAR_USUARIO);
 
@@ -58,7 +57,7 @@ export default function Login() {
                     router.push('/clientes');
                 }, 2000);
             } catch (error) {
-                guardarMensaje(error.message.replace('GraphQL error: ',''));
+                guardarMensaje(error.message.replace('GraphQL error: ', ''));
                 setTimeout(() => {
                     guardarMensaje(null);
                 }, 3000);
@@ -77,8 +76,8 @@ export default function Login() {
 
     return (
         <>
-            <div>
-                <Layout>
+            <div className="bg-gray-800 min-h-screen flex flex-col justify-center">
+                <div>
                     <h1 className="text-2xl text-white font-light text-center">Login</h1>
                     {mensaje && mostrarMensaje()}
                     <div className="flex justify-center mt-5">
@@ -89,7 +88,7 @@ export default function Login() {
                                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
                                         Email
                                     </label>
-                                    <input 
+                                    <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:shadow-outline"
                                         id="email"
                                         type="email"
@@ -100,18 +99,18 @@ export default function Login() {
                                     />
                                 </div>
 
-                                { formik.touched.email && formik.errors.email ? (
+                                {formik.touched.email && formik.errors.email ? (
                                     <div className="my-2 bg-red-100 border-l-4 border-red-500 text-red-700 p-4">
                                         <p className="font-bold">Error</p>
                                         <p>{formik.errors.email}</p>
                                     </div>
-                                ) : null }
+                                ) : null}
 
                                 <div className="mb-4">
                                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
                                         Password
                                     </label>
-                                    <input 
+                                    <input
                                         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:shadow-outline"
                                         id="password"
                                         type="password"
@@ -122,22 +121,22 @@ export default function Login() {
                                     />
                                 </div>
 
-                                { formik.touched.password && formik.errors.password ? (
+                                {formik.touched.password && formik.errors.password ? (
                                     <div className="my-2 bg-red-100 border-l-4 border-red-500 text-red-700 p-4">
                                         <p className="font-bold">Error</p>
                                         <p>{formik.errors.password}</p>
                                     </div>
-                                ) : null }
+                                ) : null}
 
-                                <input 
-                                    className="bg-gray-800 w-full mt-5 p-2 text-white uppercase hover:bg-gray-900"
+                                <input
+                                    className="btn-confirm"
                                     type="submit"
                                     value="Iniciar Sesión"
                                 />
                             </form>
                         </div>
                     </div>
-                </Layout>
+                </div>
             </div>
         </>
     )

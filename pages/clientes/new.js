@@ -1,35 +1,12 @@
 import React, { useState } from 'react';
-import Layout from '../components/Layout';
+import { NUEVO_CLIENTE, OBTENER_CLIENTES_USUARIO } from './type';
+import Layout from '../../components/Layout';
 import { useRouter } from 'next/router';
 import { FormikConsumer, useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useMutation, gql } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 
-const NUEVO_CLIENTE = gql`
-    mutation nuevoCliente($input: ClienteInput) {
-        nuevoCliente(input: $input) {
-            id
-            nombre
-            apellido
-            empresa
-            email
-        }
-    }
-`;
-
-const OBTENER_CLIENTES_USUARIO = gql`
-    query obtenerClientesVendedor {
-        obtenerClientesVendedor {
-            id
-            nombre
-            apellido
-            empresa
-            email
-        }
-    }
-`;
-
-export default function NuevoCliente() {
+export default function New() {
 
     const [mensaje, guardarMensaje] = useState(null);
 
@@ -37,7 +14,6 @@ export default function NuevoCliente() {
         update(cache, { data: { nuevoCliente }}) {
             //Obtener el objeto de cache que va actualizar
             const { obtenerClientesVendedor } = cache.readQuery({ query: OBTENER_CLIENTES_USUARIO});
-
             //Re-escribir el cache (El cache nunca se debe modificar)
             cache.writeQuery({
                 query: OBTENER_CLIENTES_USUARIO,
@@ -80,11 +56,8 @@ export default function NuevoCliente() {
                         }
                     }
                 });
-
-                //Usuario creado correctamente
-                //guardarMensaje('Cliente creado correctamente');
+                
                 router.push('/clientes');
-
             } catch (error) {
                 guardarMensaje(error.message.replace('GraphQL error: ',''));
                 setTimeout(() => {
@@ -104,7 +77,6 @@ export default function NuevoCliente() {
 
     return (
         <Layout>
-            <h1 className="text-2xl text-gray-800 font-light">Nuevo Cliente</h1>
             {mensaje && mostrarMensaje()}
             <div className="flex justify-center mt-5">
                 <div className="w-full max-w-sm">
@@ -223,7 +195,7 @@ export default function NuevoCliente() {
                         ) : null }
 
                         <input 
-                            className="bg-gray-800 w-full mt-5 p-2 text-white uppercase hover:bg-gray-900"
+                            className="btn-confirm"
                             type="submit"
                             value="Registrar Cliente"
                         />
