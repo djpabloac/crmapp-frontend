@@ -9,7 +9,7 @@ export default function Detail({pedido}) {
     
     // Mutation para cambiar el estado de un pedido
     const [ actualizarPedido ] = useMutation(ACTUALIZAR_PEDIDO);
-    const [ eliminarPedido] = useMutation(ELIMINAR_PEDIDO, {
+    const [ eliminarPedido ] = useMutation(ELIMINAR_PEDIDO, {
         update(cache) {
             const { obtenerPedidosVendedor } = cache.readQuery({
                 query: OBTENER_PEDIDOS
@@ -76,7 +76,9 @@ export default function Detail({pedido}) {
             confirmButtonText: 'Si, Eliminar',
             cancelButtonText: 'No, Cancelar'
         }).then( async (result) => {
+
             if (result.value) {
+
                 try {
                     const data = await eliminarPedido({
                         variables: {

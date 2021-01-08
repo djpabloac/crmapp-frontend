@@ -34,6 +34,11 @@ const client = new ApolloClient({
                         merge(existing, incoming) {
                             return incoming;
                         }
+                    },
+                    obtenerPedidosVendedor: {
+                        merge(existing, incoming) {
+                            return incoming;
+                        }
                     }
                 }
             }
