@@ -20,7 +20,9 @@ export default function Navbar({ user, menu }) {
         { title: "Home", url: "/", isFocus: false },
         { title: "Clientes", url: "/clientes", isFocus: false },
         { title: "Pedidos", url: "/pedidos", isFocus: false },
-        { title: "Productos", url: "/productos", isFocus: false }
+        { title: "Productos", url: "/productos", isFocus: false },
+        { title: "Mejores Vendedores", url: "/reportes/mejoresvendedores", isFocus: false },
+        { title: "Mejores Clientes", url: "/reportes/mejoresclientes", isFocus: false }
     ]
 
     let pageCurrent = urlsLink.find(url => url.url === router.pathname);
