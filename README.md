@@ -1,33 +1,21 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CrmApp Frontend
+
+The CrmApp Frontend makes it easy to manage customers, products and sales.
 
 ## Getting Started
 
-First, run the development server:
+Install package and executed MetaTag Frontend with **yarn**
 
 ```bash
-npm run dev
-# or
-yarn dev
+  yarn install
+  yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Authors
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- [@dj.pablo.ac](https://gitlab.com/dj.pablo.ac)
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-=======
-# CrmApp-FrontEnd
-Aplicación para reforzar el uso de Apollo, GraphQL y React
+[MIT](https://choosealicense.com/licenses/mit/)
